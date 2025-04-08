@@ -1,11 +1,16 @@
 import argparse
 import joblib
+import mlflow
 import pathlib
 import pandas as pd
 from sklearn.metrics import accuracy_score
 
 
 root_folder = pathlib.Path("__file__").resolve().parent
+
+mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+mlflow.set_experiment("ML Ops with ML Flow")
+mlflow.sklearn.autolog()
 
 
 def evaluate_model(
@@ -26,9 +31,10 @@ def evaluate_model(
     y_test = test_df.iloc[:, -1]
 
     # Evaluate the model
-    y_pred = model.predict(x_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    print(f"Validation Accuracy: {accuracy}")
+    with mlflow.start_run():
+        y_pred = model.predict(x_test)
+        accuracy = accuracy_score(y_test, y_pred)
+        print(f"Validation Accuracy: {accuracy}")
 
     if accuracy >= evaluation_threshold:
         return True
