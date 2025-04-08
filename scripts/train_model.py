@@ -9,6 +9,8 @@ from sklearn.ensemble import RandomForestClassifier
 root_folder = pathlib.Path("__file__").resolve().parent
 
 mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+id = uuid.uuid4()
+# mlflow.set_experiment(experiment_id=id)
 mlflow.autolog()
 
 
@@ -26,7 +28,7 @@ def train_model(
     ]  # Features (skip the first column which is an index)
     y_train = train_df.iloc[:, -1]  # Target (last column)
 
-    with mlflow.start_run():
+    with mlflow.start_run(run_id=id):
         # Train a Random Forest Classifier
         model = RandomForestClassifier(random_state=42)
         model.fit(x_train, y_train)
