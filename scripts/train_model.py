@@ -30,6 +30,8 @@ def train_model(
     model.fit(x_train, y_train)
     mlflow.sklearn.log_model(
         registered_model_name="mlflow",
+        sk_model=model,
+        artifact_path="iris_model",
     )
 
 
