@@ -28,10 +28,9 @@ def train_model(
     # Train a Random Forest Classifier
     model = RandomForestClassifier(random_state=42)
     model.fit(x_train, y_train)
-
-    # Save the model
-    model_path = pathlib.Path(model_folder).joinpath(model_name)
-    joblib.dump(model, model_path)
+    mlflow.sklearn.log_model(
+        registered_model_name="mlflow",
+    )
 
 
 if __name__ == "__main__":

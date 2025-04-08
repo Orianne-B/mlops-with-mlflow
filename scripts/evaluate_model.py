@@ -9,7 +9,6 @@ from sklearn.metrics import accuracy_score
 root_folder = pathlib.Path("__file__").resolve().parent
 
 mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
-mlflow.sklearn.autolog()
 
 
 def evaluate_model(
@@ -18,8 +17,7 @@ def evaluate_model(
     evaluation_threshold: float = 0.8,
 ) -> bool:
     # Load the model
-    model_path = pathlib.Path(model_folder).joinpath("model.pkl")
-    model = joblib.load(model_path)
+    model = mlflow.sklearn.load_model(uri="models:/mlflow/1")
 
     # Load the test data
     test_df = pd.read_csv(
