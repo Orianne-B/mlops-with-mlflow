@@ -28,7 +28,7 @@ def train_model(
     ]  # Features (skip the first column which is an index)
     y_train = train_df.iloc[:, -1]  # Target (last column)
 
-    with mlflow.start_run(run_name="run mlflow"):
+    with mlflow.start_run(): # (run_name="run mlflow"):
         # Train a Random Forest Classifier
         model = RandomForestClassifier(random_state=42)
         model.fit(x_train, y_train)
