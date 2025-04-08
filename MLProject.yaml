@@ -1,0 +1,11 @@
+name: MLOps with ML Flow
+
+python_env: python_env.yaml
+
+entry_points:
+  main:
+    parameters:
+      input_data: str
+      processed_data_folder: str
+      model_folder: str
+    command: "./run-pipeline.sh {input_data} {processed_data_folder} {model_folder}"
