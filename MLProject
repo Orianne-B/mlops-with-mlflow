@@ -8,4 +8,4 @@ entry_points:
       input_data: str
       processed_data_folder: str
       model_folder: str
-    command: "./run-pipeline.sh {input_data} {processed_data_folder} {model_folder}"
+    command: "bash run-pipeline.sh {input_data} {processed_data_folder} {model_folder}"
