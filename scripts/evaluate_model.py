@@ -31,7 +31,7 @@ def evaluate_model(
     y_test = test_df.iloc[:, -1]
 
     # Evaluate the model
-    with mlflow.start_run():
+    with mlflow.start_run(experiment_name="ML Ops with ML Flow"):
         y_pred = model.predict(x_test)
         accuracy = accuracy_score(y_test, y_pred)
         print(f"Validation Accuracy: {accuracy}")
