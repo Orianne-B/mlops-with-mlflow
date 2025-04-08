@@ -19,6 +19,6 @@ python3 /home/administrateur/exo/mlops-simple/scripts/train_model.py  --model_fo
 
 # Step 3: Evaluate the model
 echo "Evaluating the model..."
-python3 /home/administrateur/exo/mlops-simple/scripts/evaluate_model.py
+python3 /home/administrateur/exo/mlops-simple/scripts/evaluate_model.py  --model_folder "$3" --output_folder "$2"
 
 echo "Pipeline execution completed successfully."
