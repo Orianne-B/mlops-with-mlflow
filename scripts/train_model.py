@@ -1,4 +1,5 @@
 import argparse
+import uuid
 import joblib
 import mlflow
 import pathlib
@@ -25,15 +26,16 @@ def train_model(
     ]  # Features (skip the first column which is an index)
     y_train = train_df.iloc[:, -1]  # Target (last column)
 
-    # Train a Random Forest Classifier
-    model = RandomForestClassifier(random_state=42)
-    model.fit(x_train, y_train)
-    mlflow.sklearn.log_model(
-        registered_model_name="mlflow",
-        sk_model=model,
-        artifact_path="iris_model",
-    )
-    mlflow.sklearn.save_model(model, "mlflow")
+    with mlflow.start_run():
+        # Train a Random Forest Classifier
+        model = RandomForestClassifier(random_state=42)
+        model.fit(x_train, y_train)
+        mlflow.sklearn.log_model(
+            registered_model_name="mlflow",
+            sk_model=model,
+            artifact_path="iris_model",
+        )
+        mlflow.sklearn.save_model(model, "mlflow")
 
 
 if __name__ == "__main__":
