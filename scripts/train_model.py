@@ -16,8 +16,6 @@ mlflow.autolog()
 
 def train_model(
     training_data: str = str(root_folder.joinpath("data", "processed", "train.csv")),
-    model_folder: str = str(root_folder.joinpath("models", "random_forest", "v1")),
-    model_name: str = "model.pkl",
 ) -> None:
     # Load the dataset
     train_df = pd.read_csv(training_data, sep=",")
@@ -48,12 +46,7 @@ if __name__ == "__main__":
         type=str,
         default=str(root_folder.joinpath("data", "processed", "train.csv")),
     )
-    parser.add_argument(
-        "--model_folder",
-        type=str,
-        default=str(root_folder.joinpath("models", "random_forest", "v1")),
-    )
 
     args = parser.parse_args()
 
-    train_model(args.training_data, args.model_folder)
+    train_model(args.training_data)

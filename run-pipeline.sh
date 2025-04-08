@@ -8,7 +8,7 @@ SCRIPT_DIR=$(dirname "$(realpath "$0")")
 
 # Check if the required arguments are provided
 if [ "$#" -lt 1 ]; then
-  echo "Usage: $0 <input_data> <processed_data_folder> <model_folder>"
+  echo "Usage: $0 <input_data> <processed_data_folder>"
   exit 1
 fi
 
@@ -18,10 +18,10 @@ python3 "$SCRIPT_DIR/scripts/prepare_data.py"  --input_data "$1" --output_folder
 
 # Step 2: Train the model
 echo "Training the model..."
-python3 "$SCRIPT_DIR/scripts/train_model.py"  --model_folder "$3"
+python3 "$SCRIPT_DIR/scripts/train_model.py"
 
 # Step 3: Evaluate the model
 echo "Evaluating the model..."
-python3 "$SCRIPT_DIR/scripts/evaluate_model.py"  --model_folder "$3" --data_folder "$2"
+python3 "$SCRIPT_DIR/scripts/evaluate_model.py" --data_folder "$2"
 
 echo "Pipeline execution completed successfully."

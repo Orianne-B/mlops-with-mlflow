@@ -10,7 +10,6 @@ root_folder = pathlib.Path("__file__").resolve().parent
 
 
 def evaluate_model(
-    model_folder: str,
     data_root_folder: str,
     evaluation_threshold: float = 0.8,
 ) -> bool:
@@ -38,11 +37,6 @@ if __name__ == "__main__":
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Evaluate a trained model.")
     parser.add_argument(
-        "--model_folder",
-        type=str,
-        default=str(root_folder.joinpath("models", "random_forest", "v1")),
-    )
-    parser.add_argument(
         "--data_folder",
         type=str,
         default=str(root_folder.joinpath("data", "processed")),
@@ -50,4 +44,4 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    evaluate_model(args.model_folder, args.data_folder)
+    evaluate_model(args.data_folder)
