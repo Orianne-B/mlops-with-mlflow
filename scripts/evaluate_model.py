@@ -9,7 +9,7 @@ from sklearn.metrics import accuracy_score
 root_folder = pathlib.Path("__file__").resolve().parent
 
 mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
-mlflow.set_experiment(experiment_name="ML Ops with ML Flow")
+mlflow.set_experiment(experiment_id="ML Ops with ML Flow")
 mlflow.sklearn.autolog()
 
 
@@ -31,7 +31,7 @@ def evaluate_model(
     y_test = test_df.iloc[:, -1]
 
     # Evaluate the model
-    with mlflow.start_run(experiment_name="ML Ops with ML Flow"):
+    with mlflow.start_run(experiment_id="ML Ops with ML Flow"):
         y_pred = model.predict(x_test)
         accuracy = accuracy_score(y_test, y_pred)
         print(f"Validation Accuracy: {accuracy}")
