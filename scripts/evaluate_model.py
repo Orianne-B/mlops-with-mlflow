@@ -15,7 +15,7 @@ def evaluate_model(
     evaluation_threshold: float = 0.8,
 ) -> bool:
     # Load the model
-    model = mlflow.pyfunc.load_model(model_uri="models:/mlflow/4")
+    model = mlflow.pyfunc.load_model("mlflow")
 
     # Load the test data
     test_df = pd.read_csv(

@@ -28,12 +28,11 @@ def train_model(
     # Train a Random Forest Classifier
     model = RandomForestClassifier(random_state=42)
     model.fit(x_train, y_train)
-    model_info = mlflow.sklearn.log_model(
+    mlflow.sklearn.log_model(
         registered_model_name="mlflow",
         sk_model=model,
         artifact_path="iris_model",
     )
-    print(model_info)
 
 
 if __name__ == "__main__":
