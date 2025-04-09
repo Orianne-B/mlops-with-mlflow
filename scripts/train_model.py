@@ -14,11 +14,9 @@ id = uuid.uuid4().hex
 mlflow.sklearn.autolog()
 
 
-def train_model(
-    training_data: str = str(root_folder.joinpath("data", "processed", "train.csv")),
-) -> None:
+def train_model(training_data: str) -> None:
     # Load the dataset
-    train_df = pd.read_csv(training_data, sep=",")
+    train_df = pd.read_csv(pathlib.Path(training_data).joinpath("train.csv"), sep=",")
 
     # Extract features and labels
     x_train = train_df.iloc[
@@ -30,7 +28,7 @@ def train_model(
         # Train a Random Forest Classifier
         model = RandomForestClassifier(random_state=42)
         model.fit(x_train, y_train)
-        """        mlflow.sklearn.log_model(
+        """mlflow.sklearn.log_model(
             registered_model_name="mlflow",
             sk_model=model,
             artifact_path="iris_model",
@@ -40,13 +38,9 @@ def train_model(
 
 if __name__ == "__main__":
     # Parse command-line arguments
-    parser = argparse.ArgumentParser(description="Evaluate a trained model.")
-    parser.add_argument(
-        "--training_data",
-        type=str,
-        default=str(root_folder.joinpath("data", "processed", "train.csv")),
-    )
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data_folder", type=str)
 
     args = parser.parse_args()
 
-    train_model(args.training_data)
+    train_model(args.data_folder)
