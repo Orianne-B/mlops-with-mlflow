@@ -7,7 +7,7 @@ import pandas as pd
 app = FastAPI()
 
 # Load the saved model
-model_uri = "runs:/bf4e479eb6b044979319b154c43acac6/model"
+model_uri = "runs:/76467b4c9ea042478d784a48839af089/model"
 model = mlflow.pyfunc.load_model(model_uri)
 
 # Define the input schema
@@ -22,14 +22,6 @@ class PredictionInput(BaseModel):
 def predict(input_data: PredictionInput):
     # Convert input data to a DataFrame
     input_df = pd.DataFrame([input_data.dict()])
-
-    # Map old names
-    input_df.rename(columns={
-        "sepal_lenght": "150",
-        "sepal_width": "4",
-        "petal_lenght": "setosa",
-        "petal_width": "versicolor",
-    }, inplace=True)
     
     # Make predictions
     predictions = model.predict(input_df)
