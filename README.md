@@ -30,6 +30,19 @@ Poissible aussi de faire requete en python, cf documentation
 Doc
 - lifespan : chose à faire au démarage et à la fin de l'application, gestion des dépendances synchrones
 
+# Docker
+
+```bash
+cd fastapi-app
+sudo docker build -t mlflow-service:latest .
+sudo docker run --env-file .env --name mlflow-container -d mlflow-service 
+sudo docker ps
+sudo docker inspect <container_name>
+```
+<IPAddress>:5089
+
+`docker stop mlflow-container`
+
 # Example Antoine
 
 https://github.com/hanabi70/m2i_formation/tree/mlflow
