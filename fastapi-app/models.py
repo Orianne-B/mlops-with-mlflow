@@ -1,8 +1,7 @@
 import mlflow
 
-from config import Configuration
-
+from core import config
 
 def get_iris_model():
-    model_uri = Configuration.model_uri
+    model_uri = config.MODEL_URI
     return mlflow.pyfunc.load_model(model_uri)
