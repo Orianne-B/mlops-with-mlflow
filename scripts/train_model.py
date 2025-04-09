@@ -1,16 +1,9 @@
 import argparse
-import uuid
-import joblib
 import mlflow
 import pathlib
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
-root_folder = pathlib.Path("__file__").resolve().parent
-
-# mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
-id = uuid.uuid4().hex
-# mlflow.set_experiment(experiment_name="iris_experiment")
 mlflow.sklearn.autolog()
 
 

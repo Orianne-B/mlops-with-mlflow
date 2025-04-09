@@ -3,13 +3,8 @@ import numpy as np
 import pathlib
 import pandas as pd
 
-root_folder = pathlib.Path("__file__").resolve().parent
 
-
-def prepare_data(
-    input_data: str = str(root_folder.joinpath("data", "raw", "iris.csv")),
-    output_folder: str = root_folder.joinpath("data", "processed"),
-) -> None:
+def prepare_data(input_data: str, output_folder: str) -> None:
     iris_df = pd.read_csv(input_data, sep=",")
 
     train, validate, test = np.split(
@@ -24,17 +19,9 @@ def prepare_data(
 
 if __name__ == "__main__":
     # Parse command-line arguments
-    parser = argparse.ArgumentParser(description="Evaluate a trained model.")
-    parser.add_argument(
-        "--input_data",
-        type=str,
-        default=str(root_folder.joinpath("data", "raw", "iris.csv")),
-    )
-    parser.add_argument(
-        "--output_folder",
-        type=str,
-        default=str(root_folder.joinpath("data", "processed")),
-    )
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input_data", type=str)
+    parser.add_argument("--output_folder", type=str)
 
     args = parser.parse_args()
 
