@@ -35,7 +35,7 @@ def train_model(
             sk_model=model,
             artifact_path="iris_model",
         )"""
-        mlflow.sklearn.save_model(model, "iris_model")
+        mlflow.sklearn.save_model(model, "new_iris_model")
 
 
 if __name__ == "__main__":
