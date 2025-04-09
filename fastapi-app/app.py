@@ -2,8 +2,8 @@ from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 import uvicorn
 
+from api import inference_router, root_router
 from core import config
-from routes import router
 
 load_dotenv(find_dotenv())
 
@@ -12,7 +12,8 @@ load_dotenv(find_dotenv())
 app = FastAPI(title=config.API_TITLE)
 
 # Include the router
-app.include_router(router)
+app.include_router(root_router)
+app.include_router(inference_router)
 
 
 if __name__ == "__main__":
