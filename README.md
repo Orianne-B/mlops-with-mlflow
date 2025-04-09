@@ -6,6 +6,10 @@ mlflow run https://github.com/Orianne-B/mlops-with-mlflow.git -P input_data=/hom
 
 mlflow models serve -m runs:/a9199189feba45419a43b65328b903f3/model -p 8081 --env-manager=local
 
+https://mlflow.org/docs/latest/deployment/deploy-model-locally/
+
 curl http://127.0.0.1:8081/invocations -H "Content-Type:application/json"  --data '{"inputs": [{"150":6.1,"4":3.0,"setosa":4.6,"versicolor":1.4}]}'
+
+Poissible aussi de faire requete en python, cf documentation
 
 https://github.com/hanabi70/m2i_formation/tree/mlflow
