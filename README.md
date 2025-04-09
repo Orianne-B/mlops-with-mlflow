@@ -35,13 +35,26 @@ Doc
 ```bash
 cd fastapi-app
 sudo docker build -t mlflow-service:latest .
-sudo docker run --env-file .env --name mlflow-container -d mlflow-service 
+sudo docker run --env-file .env --name mlflow-container -p 5050:5089 -d mlflow-service 
 sudo docker ps
 sudo docker inspect <container_name>
 ```
-<IPAddress>:5089
 
-`docker stop mlflow-container`
+<IPAddress>:5050
+
+```bash
+docker stop mlflow-container
+docker rm mlflow-container
+```
+
+## Access MLFLow server
+
+Restart MLFLow server
+mlflow server --host 0.0.0.0 --port 8080
+
+ip add -> get ip address
+
+`sudo docker exec -it mlflow-container bash`
 
 # Example Antoine
 
