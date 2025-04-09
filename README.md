@@ -30,10 +30,12 @@ uvicorn app:app --host 0.0.0.0 --port 8000
 TODO 
 - module route ou api
 - module service fonction métier (ex chargement du modèle )
-- module schéma : modèle de données avec schéma 
 - module modèle : connection base de données ex save historique des prédiction
 - module core : securité, config, connection bdd
 - module config : settings, pydantic, .env 
+
+Doc
+- lifespan : chose à faire au démarage et à la fin de l'application, gestion des dépendances synchrones
 
 # Example Antoine
 
