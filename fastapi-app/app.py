@@ -1,11 +1,8 @@
-from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 import uvicorn
 
 from api import inference_router, root_router
 from core import config
-
-load_dotenv(find_dotenv())
 
 
 # Initialize FastAPI app
