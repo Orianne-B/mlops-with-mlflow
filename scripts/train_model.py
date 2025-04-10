@@ -21,12 +21,12 @@ def train_model(training_data: str) -> None:
         # Train a Random Forest Classifier
         model = RandomForestClassifier(random_state=42)
         model.fit(x_train, y_train)
-        """mlflow.sklearn.log_model(
-            registered_model_name="mlflow",
+        mlflow.sklearn.log_model(
+            registered_model_name="iris_model",
             sk_model=model,
             artifact_path="iris_model",
-        )"""
-        mlflow.sklearn.save_model(model, "new_iris_model")
+        )
+        # mlflow.sklearn.save_model(model, "iris_model")
 
 
 if __name__ == "__main__":
