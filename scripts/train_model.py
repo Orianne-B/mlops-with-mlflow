@@ -37,7 +37,8 @@ if __name__ == "__main__":
     # Parse command-line arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_folder", type=str)
+    parser.add_argument("--model_name", type=str)
 
     args = parser.parse_args()
 
-    train_model(args.data_folder)
+    train_model(args.data_folder, args.model_name)
