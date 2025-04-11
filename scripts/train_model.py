@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestClassifier
 mlflow.sklearn.autolog()
 
 
-def train_model(training_data: str) -> None:
+def train_model(training_data: str, model_name: str = "iris_model") -> None:
     """Train a model using MLflow and scikit-learn."""
     # Load the dataset
     train_df = pd.read_csv(pathlib.Path(training_data).joinpath("train.csv"), sep=",")
@@ -26,9 +26,9 @@ def train_model(training_data: str) -> None:
         model = RandomForestClassifier(random_state=42)
         model.fit(x_train, y_train)
         mlflow.sklearn.log_model(
-            registered_model_name="iris_model",
+            registered_model_name=model_name,
             sk_model=model,
-            artifact_path="iris_model",
+            artifact_path=model_name,
         )
         # mlflow.sklearn.save_model(model, "iris_model")
 

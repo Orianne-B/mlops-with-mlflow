@@ -8,10 +8,14 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 
 
-def evaluate_model(data_root_folder: str, evaluation_threshold: float = 0.8) -> bool:
+def evaluate_model(
+    data_root_folder: str,
+    model_name: str = "iris_model",
+    evaluation_threshold: float = 0.8,
+) -> bool:
     """Evaluate given model on given dataset."""
     # Load the model
-    model = mlflow.pyfunc.load_model("new_iris_model")
+    model = mlflow.pyfunc.load_model(model_name)
 
     # Load the test data
     test_df = pd.read_csv(pathlib.Path(data_root_folder).joinpath("test.csv"), sep=",")
@@ -24,9 +28,10 @@ def evaluate_model(data_root_folder: str, evaluation_threshold: float = 0.8) -> 
     accuracy = accuracy_score(y_test, y_pred)
     print(f"Validation Accuracy: {accuracy}")
 
-    if accuracy >= evaluation_threshold:
-        return True
-    return False
+    if accuracy < evaluation_threshold:
+        raise ValueError(
+            f"Model accuracy {accuracy} is below the threshold of {evaluation_threshold}"
+        )
 
 
 if __name__ == "__main__":
