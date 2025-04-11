@@ -76,6 +76,14 @@ ip add -> get ip address
 https://docs.github.com/fr/actions/writing-workflows/workflow-syntax-for-github-actions
 
 
+# Azure Dev Ops
+
+dev.azure.com/<"nom de l'organisation">
+
+https://learn.microsoft.com/fr-fr/azure/machine-learning/how-to-setup-mlops-azureml?view=azureml-api-2&tabs=azure-shell
+
+https://learn.microsoft.com/fr-fr/azure/machine-learning/how-to-devops-machine-learning?view=azureml-api-2&tabs=arm
+
 # Example Antoine
 
 https://github.com/hanabi70/m2i_formation/tree/mlflow
