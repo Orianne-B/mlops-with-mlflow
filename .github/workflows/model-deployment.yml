@@ -26,6 +26,7 @@ jobs:
         uv run pylint $(git ls-files '*.py') --fail-under 5
 
   deploy:
+    if: false
     environment: Global
     needs: build
     runs-on: ubuntu-latest
