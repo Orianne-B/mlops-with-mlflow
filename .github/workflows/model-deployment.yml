@@ -46,7 +46,7 @@ jobs:
       run: |
         export MLFLOW_TRACKING_URI="http://127.0.0.1:8080"
         export MLFLOW_EXPERIMENT_NAME="iris_experiment"
-        uv run mlflow server --host 127.0.0.1 --port 8080
+        nohup uv run mlflow server --host 127.0.0.1 --port 8080 &
     - name: Train the model
       run: |
         uv run python scripts/train.py --data_folder data/processed --model_name "iris_model"
