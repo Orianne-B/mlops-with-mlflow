@@ -28,6 +28,9 @@ jobs:
   train:
     runs-on: ubuntu-latest
     needs: build
+    env:
+        MLFLOW_TRACKING_URI: "http://127.0.0.1:8080"
+        MLFLOW_EXPERIMENT_NAME: "iris_experiment"
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
@@ -44,8 +47,6 @@ jobs:
         uv run python scripts/prepare_data.py --input_data data/raw/iris.csv --output_folder data/processed
     - name: Start MLFLow server
       run: |
-        export MLFLOW_TRACKING_URI="http://127.0.0.1:8080"
-        export MLFLOW_EXPERIMENT_NAME="iris_experiment"
         nohup uv run mlflow server --host 127.0.0.1 --port 8080 &
     - name: Train the model
       run: |
