@@ -38,7 +38,8 @@ if __name__ == "__main__":
     # Parse command-line arguments
     parser = argparse.ArgumentParser(description="Evaluate a trained model.")
     parser.add_argument("--data_folder", type=str)
+    parser.add_argument("--model_name", type=str)
 
     args = parser.parse_args()
 
-    evaluate_model(args.data_folder)
+    evaluate_model(args.data_folder, args.model_name)
