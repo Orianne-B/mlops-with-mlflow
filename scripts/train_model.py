@@ -1,12 +1,14 @@
 """Train a model using MLflow and scikit-learn."""
 
 import argparse
+import os
 import pathlib
 
 import mlflow
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
+mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
 mlflow.sklearn.autolog()
 
 
