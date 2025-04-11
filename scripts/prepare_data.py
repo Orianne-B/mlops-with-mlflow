@@ -1,3 +1,5 @@
+"""Prepare the data for training, validation, and testing."""
+
 import argparse
 import numpy as np
 import pathlib

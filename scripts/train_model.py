@@ -1,3 +1,5 @@
+"""Train a model using MLflow and scikit-learn."""
+
 import argparse
 import mlflow
 import pathlib
