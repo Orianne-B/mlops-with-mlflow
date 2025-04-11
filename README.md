@@ -4,6 +4,11 @@ source .venv/bin/activate
 uv add mlflow
 uv add --dev ipykernel
 
+# Git
+
+git tag <tag-name>
+git push origin --tags
+
 # Local 
 
 `./run-pipeline.sh data/raw/iris.csv data/processed`
