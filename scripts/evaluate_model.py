@@ -1,13 +1,15 @@
 """Evaluate a trained model using MLflow and scikit-learn."""
 
 import argparse
-import mlflow
 import pathlib
+
+import mlflow
 import pandas as pd
 from sklearn.metrics import accuracy_score
 
 
 def evaluate_model(data_root_folder: str, evaluation_threshold: float = 0.8) -> bool:
+    """Evaluate given model on given dataset."""
     # Load the model
     model = mlflow.pyfunc.load_model("new_iris_model")
 

@@ -1,12 +1,14 @@
 """Prepare the data for training, validation, and testing."""
 
 import argparse
-import numpy as np
 import pathlib
+
+import numpy as np
 import pandas as pd
 
 
 def prepare_data(input_data: str, output_folder: str) -> None:
+    """Prepare data."""
     iris_df = pd.read_csv(input_data, sep=",")
 
     train, validate, test = np.split(

@@ -1,8 +1,9 @@
 """Train a model using MLflow and scikit-learn."""
 
 import argparse
-import mlflow
 import pathlib
+
+import mlflow
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 
@@ -10,6 +11,7 @@ mlflow.sklearn.autolog()
 
 
 def train_model(training_data: str) -> None:
+    """Train a model using MLflow and scikit-learn."""
     # Load the dataset
     train_df = pd.read_csv(pathlib.Path(training_data).joinpath("train.csv"), sep=",")
 
