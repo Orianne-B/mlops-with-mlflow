@@ -48,7 +48,7 @@ jobs:
     - name: Build Docker image
       run: |
         cd fastapi-app
-        export $IMAGE = ${{ secrets.DOCKER_USERNAME }}/mlflow-service:latest
+        export IMAGE=${{ secrets.DOCKER_USERNAME }}/mlflow-service:latest
         docker build -t $IMAGE .
 
     - name: Push Docker image on docker hub
