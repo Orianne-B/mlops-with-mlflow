@@ -15,7 +15,7 @@ def evaluate_model(
 ) -> bool:
     """Evaluate given model on given dataset."""
     # Load the model
-    model = mlflow.pyfunc.load_model(model_name)
+    model = mlflow.pyfunc.load_model(f"models:/{model_name}/1")
 
     # Load the test data
     test_df = pd.read_csv(pathlib.Path(data_root_folder).joinpath("test.csv"), sep=",")
