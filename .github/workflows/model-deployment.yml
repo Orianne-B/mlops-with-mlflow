@@ -65,8 +65,6 @@ jobs:
     environment: Global
     needs: build
     runs-on: ubuntu-latest
-    env:
-        IMAGE: ${{ secrets.DOCKER_USERNAME }}/mlflow-service-2:latest
     steps:
     - uses: actions/checkout@v4
     - name: Login to Docker Hub
@@ -79,4 +77,4 @@ jobs:
       with:
         context: ./fastapi-app
         push: true
-        tags: $IMAGE
+        tags: ${{ secrets.DOCKER_USERNAME }}/mlflow-service-2:latest
