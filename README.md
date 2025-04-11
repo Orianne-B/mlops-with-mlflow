@@ -9,6 +9,10 @@ uv add --dev ipykernel
 git tag <tag-name>
 git push origin --tags
 
+# Start MLFlow server
+
+`mlflow server --host 127.0.0.1 --port 8080`
+
 # Local 
 
 `./run-pipeline.sh data/raw/iris.csv data/processed`
