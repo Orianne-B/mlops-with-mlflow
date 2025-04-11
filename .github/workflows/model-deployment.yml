@@ -54,6 +54,8 @@ jobs:
         docker build -t $IMAGE .
 
     - name: Push Docker image on docker hub
+      env:
+        IMAGE: ${{ secrets.DOCKER_USERNAME }}/mlflow-service:latest
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push $IMAGE
