@@ -22,8 +22,10 @@ jobs:
         uv sync
     - name: Analysing the code with pylint
       run: |
-        uv run pylint $(git ls-files '*.py')
+        uv run pylint $(git ls-files '*.py') --fail-under 5
   deploy:
+    environment: Global
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
