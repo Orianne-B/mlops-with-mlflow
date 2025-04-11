@@ -1,3 +1,9 @@
+# UV
+
+source .venv/bin/activate
+uv add mlflow
+uv add --dev ipykernel
+
 # Local 
 
 `./run-pipeline.sh data/raw/iris.csv data/processed`
@@ -15,7 +21,7 @@ mlflow run https://github.com/Orianne-B/mlops-with-mlflow.git -P input_data=/hom
 
 # MLFLow Serve
 
-`mlflow models serve -m runs:/a9199189feba45419a43b65328b903f3/model -p 8081 --env-manager=local`
+`mlflow models serve -m runs:/8faa59a98d314ce5b9adbd1c8e01cc1d/model -p 8081 --env-manager=local`
 
 https://mlflow.org/docs/latest/deployment/deploy-model-locally/
 
@@ -55,6 +61,11 @@ mlflow server --host 0.0.0.0 --port 8080
 ip add -> get ip address
 
 `sudo docker exec -it mlflow-container bash`
+
+# GitHub actions
+
+https://docs.github.com/fr/actions/writing-workflows/workflow-syntax-for-github-actions
+
 
 # Example Antoine
 
