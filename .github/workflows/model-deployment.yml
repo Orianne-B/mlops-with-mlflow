@@ -27,6 +27,8 @@ jobs:
     environment: Global
     needs: build
     runs-on: ubuntu-latest
+    env:
+        IMAGE: ${{ secrets.DOCKER_USERNAME }}/mlflow-service:latest
     steps:
     - uses: actions/checkout@v4
     - name: Set up Docker
@@ -50,12 +52,9 @@ jobs:
     - name: Build Docker image
       run: |
         cd fastapi-app
-        export IMAGE=${{ secrets.DOCKER_USERNAME }}/mlflow-service:latest
         docker build -t $IMAGE .
 
     - name: Push Docker image on docker hub
-      env:
-        IMAGE: ${{ secrets.DOCKER_USERNAME }}/mlflow-service:latest
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker push $IMAGE
